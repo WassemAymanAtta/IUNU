@@ -38,7 +38,7 @@
 
 
 /* =========================
-   MENU
+   DESKTOP MENU
 ========================= */
 
 .navbar-menu {
@@ -64,24 +64,18 @@
     transition: color 0.3s ease;
 }
 
-
-/* Hover */
-
 .nav-link:hover {
     color: #9a8a64;
 }
 
 
 /* =========================
-   CURRENT PAGE
+   ACTIVE PAGE
 ========================= */
 
 .nav-link-active {
     color: #9a8a64;
 }
-
-
-/* Underline */
 
 .nav-link-active::after {
     content: "";
@@ -93,11 +87,6 @@
     background: #9a8a64;
     animation: underlineAppear 0.25s ease;
 }
-
-
-/* =========================
-   UNDERLINE ANIMATION
-========================= */
 
 @keyframes underlineAppear {
     from {
@@ -112,7 +101,7 @@
 
 
 /* =========================
-   PHONE
+   DESKTOP PHONE
 ========================= */
 
 .navbar-phone {
@@ -136,75 +125,151 @@
 }
 
 .phone-icon {
-    font-size: 14px;
-}
-
-
-/* =========================
-   TABLET
-========================= */
-
-@media (max-width: 900px) {
-    .navbar-container {
-        padding: 0 18px;
-    }
-    .navbar-menu {
-        gap: 18px;
-    }
-    .nav-link {
-        font-size: 10px;
-    }
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 650px) {
-    .navbar {
-        height: auto;
-    }
-    .navbar-container {
-        min-height: 60px;
-        flex-wrap: wrap;
-        gap: 15px;
-        padding: 12px 16px;
-    }
-    .navbar-menu {
-        order: 3;
-        width: 100%;
-        overflow-x: auto;
-        justify-content: flex-start;
-        padding-bottom: 4px;
-        gap: 22px;
-    }
-    .nav-link {
-        white-space: nowrap;
-    }
-    .nav-link-active::after {
-        bottom: -5px;
-    }
-    .navbar-phone {
-        width: 90px;
-        height: 30px;
-    }
-}
-
-.phone-icon {
     width: 14px;
     height: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 14px;
 }
 
-.phone-icon svg {
-    width: 14px;
-    height: 14px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 1.7;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+
+/* =========================
+   MOBILE BUTTON
+========================= */
+
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: #31505c;
+    font-size: 32px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0;
+}
+
+
+/* =========================
+   MOBILE CLOSE BUTTON
+========================= */
+
+.menu-close {
+    display: none;
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    background: transparent;
+    border: none;
+    color: #31505c;
+    font-size: 42px;
+    font-weight: 300;
+    line-height: 1;
+    cursor: pointer;
+}
+
+
+/* =========================
+   MOBILE PHONE
+========================= */
+
+.mobile-phone {
+    display: none;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 650px) {
+    /* Navbar */
+    .navbar {
+        height: 62px;
+    }
+    .navbar-container {
+        height: 62px;
+        padding: 0 28px;
+    }
+    /* Logo */
+    .navbar-logo {
+        min-width: auto;
+        font-size: 12px;
+    }
+    /* Hide desktop phone */
+    .navbar-phone {
+        display: none;
+    }
+    /* Hamburger */
+    .menu-toggle {
+        display: block;
+    }
+    /* =========================
+       MOBILE MENU
+    ========================= */
+    .navbar-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: #ffffff;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 0;
+        padding: 120px 45px 40px;
+        overflow-y: auto;
+        transform: translateX(100%);
+        transition: transform 0.35s ease;
+        z-index: 2000;
+    }
+    /* Open */
+    .navbar-menu.show {
+        transform: translateX(0);
+    }
+    /* =========================
+       MOBILE LINKS
+    ========================= */
+    .navbar-menu .nav-link {
+        width: auto;
+        margin-bottom: 30px;
+        color: #31505c;
+        font-size: 24px;
+        font-weight: 400;
+        letter-spacing: 0;
+    }
+    /* Active */
+    .navbar-menu .nav-link-active {
+        color: #d8d4ca;
+    }
+    /* Remove desktop underline */
+    .navbar-menu .nav-link-active::after {
+        display: none;
+    }
+    /* =========================
+       MOBILE PHONE
+    ========================= */
+    .mobile-phone {
+        width: 210px;
+        height: 76px;
+        margin-top: 15px;
+        border: 2px solid #31505c;
+        border-radius: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        color: #31505c;
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: 600;
+    }
+    /* =========================
+       CLOSE BUTTON
+    ========================= */
+    .menu-close {
+        display: block;
+    }
 }
