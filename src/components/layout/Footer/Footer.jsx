@@ -82,7 +82,7 @@ function Footer() {
 
           {/* WhatsApp */}
           <a
-            href="https://wa.me/201000000000"
+            href="whatsapp://send?phone=201091218088"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="WhatsApp"

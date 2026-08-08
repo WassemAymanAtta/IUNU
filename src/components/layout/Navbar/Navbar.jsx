@@ -51,14 +51,7 @@ function Navbar() {
             CONTACT
           </NavLink>
 
-          <NavLink
-            to="/blank"
-            className={({ isActive }) =>
-              isActive ? "nav-link nav-link-active" : "nav-link"
-            }
-          >
-            BLANK
-          </NavLink>
+         
 
         </nav>
 
