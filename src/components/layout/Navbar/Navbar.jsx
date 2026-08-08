@@ -1,55 +1,77 @@
+import { NavLink, Link } from "react-router-dom";
 import "./Navbar.css";
-import { Link } from "react-router-dom";
-import { FaBars } from "react-icons/fa";
 
 function Navbar() {
   return (
     <header className="navbar">
+      <div className="navbar-container">
 
-      <div className="container">
+        {/* Logo */}
+        <Link to="/" className="navbar-logo">
+          IUNU
+        </Link>
 
-        <div className="logo">
+        {/* Navigation */}
+        <nav className="navbar-menu">
 
-          <Link to="/">
-            EduPlatform
-          </Link>
+          <NavLink
+            to="/"
+            end
+            className={({ isActive }) =>
+              isActive ? "nav-link nav-link-active" : "nav-link"
+            }
+          >
+            HOME
+          </NavLink>
 
-        </div>
+          <NavLink
+            to="/project"
+            className={({ isActive }) =>
+              isActive ? "nav-link nav-link-active" : "nav-link"
+            }
+          >
+            PROJECT
+          </NavLink>
 
-        <nav className="nav-links">
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              isActive ? "nav-link nav-link-active" : "nav-link"
+            }
+          >
+            ABOUT
+          </NavLink>
 
-          <Link to="/">Home</Link>
+          <NavLink
+            to="/contact"
+            className={({ isActive }) =>
+              isActive ? "nav-link nav-link-active" : "nav-link"
+            }
+          >
+            CONTACT
+          </NavLink>
 
-          <Link to="/courses">Courses</Link>
-
-          <Link to="/teachers">Teachers</Link>
-
-          <Link to="/about">About</Link>
-
-          <Link to="/contact">Contact</Link>
+          <NavLink
+            to="/blank"
+            className={({ isActive }) =>
+              isActive ? "nav-link nav-link-active" : "nav-link"
+            }
+          >
+            BLANK
+          </NavLink>
 
         </nav>
 
-        <div className="nav-buttons">
-
-          <Link className="login-btn" to="/login">
-            Login
-          </Link>
-
-          <Link className="register-btn" to="/register">
-            Get Started
-          </Link>
-
-        </div>
-
-        <button className="menu-btn">
-
-          <FaBars />
-
-        </button>
+        {/* Phone */}
+        <a
+          href="tel:17337"
+          className="navbar-phone"
+        >
+          <span className="phone-icon">☎</span>
+          17337
+        </a>
 
       </div>
-
     </header>
   );
 }
