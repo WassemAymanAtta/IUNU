@@ -188,3 +188,110 @@
         font-size: 8px;
     }
 }
+
+
+/* =========================
+   QUOTE SUCCESS
+========================= */
+
+.quote-success {
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.quote-success-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #9a8a64;
+    border-radius: 50%;
+    color: #9a8a64;
+    font-size: 25px;
+    animation: quoteSuccessAppear 0.5s ease;
+}
+
+.quote-success h2 {
+    margin: 0 0 15px;
+    color: #7f7d75;
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.quote-success-main {
+    margin: 0 0 12px;
+    color: #31505c;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.quote-success-description {
+    max-width: 500px;
+    margin: 0 auto 30px;
+    color: #888680;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1.8;
+}
+
+.quote-success-button {
+    padding: 11px 24px;
+    border: 1px solid #7f7d75;
+    background: transparent;
+    color: #7f7d75;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.quote-success-button:hover {
+    background: #7f7d75;
+    color: #ffffff;
+}
+
+@keyframes quoteSuccessAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* =========================
+   QUOTE SUCCESS MOBILE
+========================= */
+
+@media (max-width: 600px) {
+    .quote-success {
+        padding: 40px 15px;
+    }
+    .quote-success-icon {
+        width: 52px;
+        height: 52px;
+        font-size: 22px;
+    }
+    .quote-success h2 {
+        font-size: 23px;
+    }
+    .quote-success-main {
+        font-size: 13px;
+    }
+    .quote-success-description {
+        font-size: 11px;
+    }
+    .quote-success-button {
+        font-size: 10px;
+    }
+}

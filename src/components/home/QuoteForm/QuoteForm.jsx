@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./QuoteForm.css";
 
 function QuoteForm() {
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     name: "",
     phone: "",
     city: "",
@@ -10,7 +10,10 @@ function QuoteForm() {
     project: "",
     whatsapp: "",
     spaceType: "",
-  });
+  };
+
+  const [formData, setFormData] = useState(initialFormData);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -24,19 +27,22 @@ function QuoteForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    const form = event.currentTarget;
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    // Temporary until backend is connected
     console.log("Quote Request:", formData);
 
-    alert("Your request has been submitted successfully.");
+    setSubmitted(true);
+  };
 
-    setFormData({
-      name: "",
-      phone: "",
-      city: "",
-      email: "",
-      project: "",
-      whatsapp: "",
-      spaceType: "",
-    });
+  const handleAnotherRequest = () => {
+    setFormData(initialFormData);
+    setSubmitted(false);
   };
 
   return (
@@ -44,194 +50,304 @@ function QuoteForm() {
 
       <div className="quote-container">
 
-        <div className="quote-header">
-          <h2>Request A Quote</h2>
+        {!submitted ? (
+          <>
+            {/* =========================
+                HEADER
+            ========================= */}
 
-          <p>
-            Fill in your details and we will be in touch shortly.
-          </p>
-        </div>
+            <div className="quote-header">
 
-        <form
-          className="quote-form"
-          onSubmit={handleSubmit}
-        >
+              <h2>Request A Quote</h2>
 
-          {/* Row 1 */}
-          <div className="quote-row">
+              <p>
+                Tell us what you are looking for and our team
+                will get in touch with you shortly.
+              </p>
 
-            <div className="quote-field">
-              <label htmlFor="name">
-                Name
-              </label>
-
-              <input
-                id="name"
-                name="name"
-                type="text"
-                placeholder="Enter your name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-              />
             </div>
 
-            <div className="quote-field">
-              <label htmlFor="phone">
-                Phone number
-              </label>
 
-              <input
-                id="phone"
-                name="phone"
-                type="tel"
-                placeholder="Enter your phone number"
-                value={formData.phone}
-                onChange={handleChange}
-                required
-              />
-            </div>
+            {/* =========================
+                FORM
+            ========================= */}
 
-          </div>
-
-
-          {/* Row 2 */}
-          <div className="quote-row">
-
-            <div className="quote-field">
-              <label htmlFor="city">
-                City
-              </label>
-
-              <input
-                id="city"
-                name="city"
-                type="text"
-                placeholder="Enter your City"
-                value={formData.city}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            <div className="quote-field">
-              <label htmlFor="email">
-                Email
-              </label>
-
-              <input
-                id="email"
-                name="email"
-                type="email"
-                placeholder="Enter your email address"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-          </div>
-
-
-          {/* Row 3 */}
-          <div className="quote-row">
-
-            <div className="quote-field">
-              <label htmlFor="project">
-                Project
-              </label>
-
-              <select
-                id="project"
-                name="project"
-                value={formData.project}
-                onChange={handleChange}
-                required
-              >
-                <option value="">
-                  Select your option
-                </option>
-
-                <option value="residential">
-                  Residential
-                </option>
-
-                <option value="commercial">
-                  Commercial
-                </option>
-
-                <option value="administrative">
-                  Administrative
-                </option>
-              </select>
-            </div>
-
-            <div className="quote-field">
-              <label htmlFor="whatsapp">
-                What's App Number
-              </label>
-
-              <input
-                id="whatsapp"
-                name="whatsapp"
-                type="tel"
-                placeholder="Enter your What's App Number"
-                value={formData.whatsapp}
-                onChange={handleChange}
-              />
-            </div>
-
-          </div>
-
-
-          {/* Space Type */}
-          <div className="quote-field quote-full-field">
-
-            <label htmlFor="spaceType">
-              What is the most suitable space for your needs?
-            </label>
-
-            <select
-              id="spaceType"
-              name="spaceType"
-              value={formData.spaceType}
-              onChange={handleChange}
-              required
+            <form
+              className="quote-form"
+              onSubmit={handleSubmit}
+              noValidate={false}
             >
-              <option value="">
-                Select your option
-              </option>
 
-              <option value="apartment">
-                Apartment
-              </option>
+              {/* =========================
+                  NAME / PHONE
+              ========================= */}
 
-              <option value="villa">
-                Villa
-              </option>
+              <div className="quote-row">
 
-              <option value="office">
-                Office
-              </option>
+                <div className="quote-field">
 
-              <option value="commercial">
-                Commercial Space
-              </option>
-            </select>
+                  <label htmlFor="quote-name">
+                    Name
+                  </label>
 
-          </div>
+                  <input
+                    id="quote-name"
+                    name="name"
+                    type="text"
+                    placeholder="Enter your name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    minLength={2}
+                    maxLength={60}
+                    pattern="^[A-Za-z\u0600-\u06FF]+(?:[ '\u0600-\u06FF-][A-Za-z\u0600-\u06FF]+)*$"
+                    title="Please enter a valid name using letters only."
+                    autoComplete="name"
+                  />
+
+                </div>
 
 
-          {/* Submit */}
-          <div className="quote-submit">
+                <div className="quote-field">
 
-            <button type="submit">
-              SUBMIT
+                  <label htmlFor="quote-phone">
+                    Phone number
+                  </label>
+
+                  <input
+                    id="quote-phone"
+                    name="phone"
+                    type="tel"
+                    placeholder="Enter your phone number"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
+                    pattern="^(01[0125][0-9]{8})$"
+                    title="Please enter a valid Egyptian mobile number, e.g. 01012345678."
+                    inputMode="numeric"
+                    maxLength={11}
+                    autoComplete="tel"
+                  />
+
+                </div>
+
+              </div>
+
+
+              {/* =========================
+                  CITY / EMAIL
+              ========================= */}
+
+              <div className="quote-row">
+
+                <div className="quote-field">
+
+                  <label htmlFor="quote-city">
+                    City
+                  </label>
+
+                  <input
+                    id="quote-city"
+                    name="city"
+                    type="text"
+                    placeholder="Enter your city"
+                    value={formData.city}
+                    onChange={handleChange}
+                    required
+                    minLength={2}
+                    maxLength={60}
+                    pattern="^[A-Za-z\u0600-\u06FF]+(?:[ '\u0600-\u06FF-][A-Za-z\u0600-\u06FF]+)*$"
+                    title="Please enter a valid city name."
+                    autoComplete="address-level2"
+                  />
+
+                </div>
+
+
+                <div className="quote-field">
+
+                  <label htmlFor="quote-email">
+                    Email
+                  </label>
+
+                  <input
+                    id="quote-email"
+                    name="email"
+                    type="email"
+                    placeholder="Enter your email address"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    maxLength={100}
+                    title="Please enter a valid email address."
+                    autoComplete="email"
+                  />
+
+                </div>
+
+              </div>
+
+
+              {/* =========================
+                  PROJECT / WHATSAPP
+              ========================= */}
+
+              <div className="quote-row">
+
+                <div className="quote-field">
+
+                  <label htmlFor="quote-project">
+                    Project Type
+                  </label>
+
+                  <select
+                    id="quote-project"
+                    name="project"
+                    value={formData.project}
+                    onChange={handleChange}
+                    required
+                  >
+
+                    <option value="">
+                      Select project type
+                    </option>
+
+                    <option value="residential">
+                      Residential
+                    </option>
+
+                    <option value="commercial">
+                      Commercial
+                    </option>
+
+                    <option value="administrative">
+                      Administrative
+                    </option>
+
+                  </select>
+
+                </div>
+
+
+                <div className="quote-field">
+
+                  <label htmlFor="quote-whatsapp">
+                    WhatsApp Number
+                  </label>
+
+                  <input
+                    id="quote-whatsapp"
+                    name="whatsapp"
+                    type="tel"
+                    placeholder="Enter your WhatsApp number"
+                    value={formData.whatsapp}
+                    onChange={handleChange}
+                    pattern="^(01[0125][0-9]{8})$"
+                    title="Please enter a valid Egyptian mobile number, e.g. 01012345678."
+                    inputMode="numeric"
+                    maxLength={11}
+                    autoComplete="tel"
+                  />
+
+                </div>
+
+              </div>
+
+
+              {/* =========================
+                  SPACE TYPE
+              ========================= */}
+
+              <div className="quote-field quote-full-field">
+
+                <label htmlFor="quote-spaceType">
+                  What type of space are you looking for?
+                </label>
+
+                <select
+                  id="quote-spaceType"
+                  name="spaceType"
+                  value={formData.spaceType}
+                  onChange={handleChange}
+                  required
+                >
+
+                  <option value="">
+                    Select space type
+                  </option>
+
+                  <option value="apartment">
+                    Apartment
+                  </option>
+
+                  <option value="villa">
+                    Villa
+                  </option>
+
+                  <option value="office">
+                    Office
+                  </option>
+
+                  <option value="commercial">
+                    Commercial Space
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              {/* =========================
+                  SUBMIT
+              ========================= */}
+
+              <div className="quote-submit">
+
+                <button type="submit">
+                  SUBMIT REQUEST
+                </button>
+
+              </div>
+
+            </form>
+          </>
+        ) : (
+
+          /* =========================
+              SUCCESS MESSAGE
+          ========================= */
+
+          <div className="quote-success">
+
+            <div className="quote-success-icon">
+              ✓
+            </div>
+
+            <h2>
+              Thank You!
+            </h2>
+
+            <p className="quote-success-main">
+              Your request has been submitted successfully.
+            </p>
+
+            <p className="quote-success-description">
+              We have received your inquiry.
+              Our team will review your request and contact you shortly
+              to discuss the available options.
+            </p>
+
+            <button
+              type="button"
+              className="quote-success-button"
+              onClick={handleAnotherRequest}
+            >
+              SEND ANOTHER REQUEST
             </button>
 
           </div>
 
-        </form>
+        )}
 
       </div>
 
