@@ -191,3 +191,112 @@
         padding: 70px 20px;
     }
 }
+
+
+/* =========================
+   SUCCESS MESSAGE
+========================= */
+
+.success-message {
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.success-icon {
+    width: 55px;
+    height: 55px;
+    margin: 0 auto 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #9a8a64;
+    border-radius: 50%;
+    color: #9a8a64;
+    font-size: 24px;
+    font-weight: 400;
+    animation: successAppear 0.5s ease;
+}
+
+.success-message h2 {
+    margin: 0 0 15px;
+    color: #7f7d75;
+    font-size: 26px;
+    font-weight: 500;
+}
+
+.success-main {
+    margin: 0 0 10px;
+    color: #31505c;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.success-description {
+    margin: 0 auto 25px;
+    max-width: 500px;
+    color: #888680;
+    font-size: 11px;
+    font-weight: 300;
+    line-height: 1.8;
+}
+
+.success-button {
+    padding: 10px 22px;
+    border: 1px solid #7f7d75;
+    background: transparent;
+    color: #7f7d75;
+    font-family: "Poppins", sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.success-button:hover {
+    background: #7f7d75;
+    color: #ffffff;
+}
+
+@keyframes successAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* =========================
+   SUCCESS MOBILE
+========================= */
+
+@media (max-width: 650px) {
+    .success-message {
+        padding: 20px 15px;
+    }
+    .success-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 21px;
+        margin-bottom: 20px;
+    }
+    .success-message h2 {
+        font-size: 22px;
+    }
+    .success-main {
+        font-size: 13px;
+    }
+    .success-description {
+        font-size: 10px;
+        line-height: 1.7;
+    }
+    .success-button {
+        font-size: 9px;
+    }
+}

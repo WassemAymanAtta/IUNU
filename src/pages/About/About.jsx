@@ -1,11 +1,29 @@
 import Navbar from "../../components/layout/Navbar/Navbar";
 import Footer from "../../components/layout/Footer/Footer";
 import "./About.css";
-
+import { Helmet } from "react-helmet-async";
 function About() {
   return (
     <div className="about-page">
 
+  <Helmet>
+  <title>About Us | IUNU Developments</title>
+
+  <meta
+    name="description"
+    content="Learn more about IUNU Developments, our vision, values, and approach to creating enduring real estate spaces."
+  />
+
+  <meta
+    name="keywords"
+    content="about IUNU, IUNU Developments, real estate developer Egypt"
+  />
+
+  <link
+    rel="canonical"
+    href="https://iunu-eg.com/about"
+  />
+</Helmet>
       <Navbar />
 
       <main>

@@ -386,3 +386,100 @@
     width: 24px;
     height: 24px;
 }
+
+
+/* =========================
+   CONTACT SUCCESS
+========================= */
+
+.contact-success {
+    width: 100%;
+    max-width: 550px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.contact-success .success-icon {
+    width: 55px;
+    height: 55px;
+    margin: 0 auto 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #9a8a64;
+    border-radius: 50%;
+    color: #9a8a64;
+    font-size: 24px;
+    animation: successAppear 0.5s ease;
+}
+
+.contact-success h2 {
+    margin: 0 0 15px;
+    color: #7f7d75;
+    font-size: 26px;
+    font-weight: 500;
+}
+
+.contact-success .success-main {
+    margin: 0 0 10px;
+    color: #31505c;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.contact-success .success-description {
+    margin: 0 auto 25px;
+    max-width: 450px;
+    color: #888680;
+    font-size: 11px;
+    font-weight: 300;
+    line-height: 1.8;
+}
+
+.contact-success .success-button {
+    padding: 10px 22px;
+    border: 1px solid #7f7d75;
+    background: transparent;
+    color: #7f7d75;
+    font-family: "Poppins", sans-serif;
+    font-size: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.contact-success .success-button:hover {
+    background: #7f7d75;
+    color: #ffffff;
+}
+
+@keyframes successAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 650px) {
+    .contact-success {
+        padding: 30px 15px;
+    }
+    .contact-success h2 {
+        font-size: 22px;
+    }
+    .contact-success .success-main {
+        font-size: 13px;
+    }
+    .contact-success .success-description {
+        font-size: 10px;
+    }
+}

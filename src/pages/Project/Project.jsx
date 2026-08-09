@@ -1,11 +1,39 @@
+import { useState } from "react";
 import Navbar from "../../components/layout/Navbar/Navbar";
 import "./Project.css";
 import Footer from "../../components/layout/Footer/Footer";
-
+import { Helmet } from "react-helmet-async";
 function Project() {
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    setSubmitted(true);
+  };
+
   return (
+    
     <div className="project-page">
 
+  <Helmet>
+  <title>Projects | IUNU Developments</title>
+
+  <meta
+    name="description"
+    content="Explore IUNU Developments projects and discover thoughtfully designed spaces built with quality, purpose, and long-term value."
+  />
+
+  <meta
+    name="keywords"
+    content="IUNU projects, real estate projects, property development, Egypt, New Cairo"
+  />
+
+  <link
+    rel="canonical"
+    href="https://iunu-eg.com/project"
+  />
+</Helmet>
       <Navbar />
 
       <main>
@@ -48,28 +76,64 @@ function Project() {
 
         </section>
 
-        {/* Newsletter */}
+        {/* Contact / Newsletter */}
         <section className="project-contact">
-          <h2>Get in Touch Today</h2>
 
-          <p>
-            Reach out to us to discuss your real estate needs.
-          </p>
+          {!submitted ? (
+            <>
+              <h2>Get in Touch Today</h2>
 
-          <form className="project-newsletter">
-            <input
-              type="email"
-              placeholder="Email"
-            />
+              <p>
+                Reach out to us to discuss your real estate needs.
+              </p>
 
-            <button type="submit">
-              SIGN UP
-            </button>
-          </form>
+              <form
+                className="project-newsletter"
+                onSubmit={handleSubmit}
+              >
+                <input
+                  type="email"
+                  placeholder="Email"
+                  required
+                />
+
+                <button type="submit">
+                  SIGN UP
+                </button>
+              </form>
+            </>
+          ) : (
+            <div className="success-message">
+
+              <div className="success-icon">
+                ✓
+              </div>
+
+              <h2>Thank You!</h2>
+
+              <p className="success-main">
+                Your request has been submitted successfully.
+              </p>
+
+              <p className="success-description">
+                We have received your request successfully.
+                Our team will contact you soon.
+              </p>
+
+              <button
+                className="success-button"
+                onClick={() => setSubmitted(false)}
+              >
+                SEND ANOTHER REQUEST
+              </button>
+
+            </div>
+          )}
+
         </section>
 
-
       </main>
+
       <Footer />
 
     </div>
