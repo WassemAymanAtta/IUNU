@@ -17,11 +17,6 @@ function Contact() {
     content="Get in touch with IUNU Developments. Contact our team for real estate inquiries, projects, and development opportunities."
   />
 
-  <meta
-    name="keywords"
-    content="contact IUNU, IUNU Developments contact, real estate Egypt, New Cairo"
-  />
-
   <link
     rel="canonical"
     href="https://iunu-eg.com/contact"
@@ -81,8 +76,9 @@ function Contact() {
                   <div className="form-row">
 
                     {/* First Name */}
-
+<label htmlFor="firstName">First name</label>
                     <input
+                      id="firstName"
                       type="text"
                       name="firstName"
                       placeholder="First name"
@@ -96,8 +92,10 @@ function Contact() {
 
 
                     {/* Last Name */}
+<label htmlFor="lastName">First name</label>
 
                     <input
+                    id="lastName"
                       type="text"
                       name="lastName"
                       placeholder="Last name"
@@ -119,8 +117,10 @@ function Contact() {
                   <div className="form-row">
 
                     {/* Phone */}
+<label htmlFor="phone">First name</label>
 
                     <input
+                    id="phone"
                       type="tel"
                       name="phone"
                       placeholder="Phone"
@@ -134,8 +134,10 @@ function Contact() {
 
 
                     {/* Email */}
+<label htmlFor="email">First name</label>
 
                     <input
+                    id="email"
                       type="email"
                       name="email"
                       placeholder="Email"
