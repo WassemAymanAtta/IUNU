@@ -12,10 +12,9 @@ function AppRoutes() {
   return (
 
     <Routes>
-
-      <Route path="/" element={<Home />} />
-
-      <Route path="/login" element={<Login />} />
+      <Route path="/" element={<Login/>}/>
+    
+<Route path="/login" element={<Login />} />
 
       <Route path="/register" element={<Register />} />
 
@@ -23,7 +22,7 @@ function AppRoutes() {
         path="/forgot-password"
         element={<ForgotPassword />}
       />
-
+  <Route path="/home" element={<Home />} />
       <Route
         path="/project"
         element={<Project />}

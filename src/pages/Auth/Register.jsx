@@ -63,7 +63,7 @@ function Register() {
       formData.email
     );
 
-    navigate("/login");
+    navigate("/home");
   };
 
   return (

@@ -49,7 +49,7 @@ function Login() {
       formData.email
     );
 
-    navigate("/");
+    navigate("/home");
   };
 
   return (
